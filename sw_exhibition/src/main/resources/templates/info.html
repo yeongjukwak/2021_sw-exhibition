@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+  <meta charset="UTF-8">
+  <title>info</title>
+</head>
+<body>
+  <div>
+    <h3>프로젝트 상세보기</h3>
+    <div>
+      <p><strong>팀원</strong></p>
+      <div th:each="mem : ${proj_mem}">
+        <p>======================================</p>
+        <span th:text="'소속: ' + ${mem.mem_team}"></span><br>
+        <span th:text="'학년: ' + ${mem.mem_grade}"></span><br>
+        <span th:text="'전공: ' + ${mem.mem_major}"></span><br>
+        <span th:text="'이름: ' + ${mem.mem_name}"></span><br>
+      </div>
+    </div>
+    <p>====================================================</p>
+    <div>
+      <p><strong>sw전시회 작품</strong></p>
+      <span th:text="'제목: ' + ${proj_info.proj_name}"></span><br>
+      <span th:text="'설명: ' + ${proj_info.proj_content}"></span><br>
+      <span th:text="'분야: ' + ${proj_info.proj_developField}"></span><br>
+      <span th:text="'깃허브: ' + ${proj_info.proj_github}"></span><br>
+      <span th:text="'시연영상: ' + ${proj_info.proj_videoUrl}"></span><br>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.caerang.sw_exhibition.mapper.project.ProjectMapper">
+
+    <select id="projectList" parameterType="String" resultType="String">
+        SELECT proj_name FROM project WHERE proj_developField = #{field}
+    </select>
+
+    <select id="projectDetail" parameterType="Map" resultType="ProjectDto">
+        SELECT * FROM project
+        WHERE proj_developField = #{field} AND proj_name = #{title}
+    </select>
+
+</mapper>
