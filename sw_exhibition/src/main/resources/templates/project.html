@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Project</title>
+</head>
+<body>
+  <ul>
+    <li th:each="proj : ${proj_list}">
+      <span th:text="${proj}"></span>
+    </li>
+  </ul>
+</body>
+</html>
