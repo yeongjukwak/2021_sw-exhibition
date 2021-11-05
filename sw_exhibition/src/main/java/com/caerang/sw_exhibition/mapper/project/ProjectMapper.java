@@ -1,6 +1,7 @@
 package com.caerang.sw_exhibition.mapper.project;
 
 import com.caerang.sw_exhibition.dto.project.ProjectDto;
+import com.caerang.sw_exhibition.dto.project.ProjectListDto;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -10,6 +11,6 @@ import java.util.Map;
 @Mapper
 @Repository
 public interface ProjectMapper {
-    public List<String> projectList(String field);
-    public ProjectDto projectDetail(Map map);
+    public List<ProjectListDto> projectList();
+    public ProjectDto projectDetail(String title);
 }

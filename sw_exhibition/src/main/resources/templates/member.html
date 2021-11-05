@@ -3,17 +3,15 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>member</title>
+  <title>Member of Team</title>
 </head>
 <body>
-  <div th:each="mem : ${mem_list}">
-    <span th:text="${mem.mem_id}"></span><br>
+  <div th:each="mem : ${memberList}">
     <span th:text="${mem.mem_name}"></span><br>
-    <span th:text="${mem.mem_team}"></span><br>
     <span th:text="${mem.mem_grade}"></span><br>
-    <span th:text="${mem.mem_email}"></span><br>
     <span th:text="${mem.mem_github}"></span><br>
-    <span th:text="${mem.mem_major}"></span><br><hr>
+    <span th:text="${mem.mem_major}"></span><br>
+    <hr>
   </div>
 </body>
 </html>

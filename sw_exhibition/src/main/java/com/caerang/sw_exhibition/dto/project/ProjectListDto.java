@@ -10,12 +10,10 @@ import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
-@Alias("ProjectDto")
+@Alias("ProjectListDto")
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProjectDto {
+public class ProjectListDto {
     @NotNull private String proj_name;
-    @NotNull private String proj_content;
-    private String proj_github;
     @NotNull private String proj_developField;
 }

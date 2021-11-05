@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Project Detail</title>
+</head>
+<body>
+  <div>
+    <div>
+      <p><strong>팀원</strong></p>
+      <div th:each="mem : ${memberList}">
+        <p>======================================</p>
+        <span th:text="'소속: ' + ${mem.mem_team}"></span><br>
+        <span th:text="'학년: ' + ${mem.mem_grade}"></span><br>
+        <span th:text="'전공: ' + ${mem.mem_major}"></span><br>
+        <span th:text="'이름: ' + ${mem.mem_name}"></span><br>
+      </div>
+    </div>
+    <p>====================================================</p>
+    <div>
+      <p><strong>sw전시회 작품</strong></p>
+      <span th:text="'제목: ' + ${projectInfo.proj_name}"></span><br>
+      <span th:text="'설명: ' + ${projectInfo.proj_content}"></span><br>
+      <span th:text="'분야: ' + ${projectInfo.proj_developField}"></span><br>
+      <span th:text="'깃허브: ' + ${projectInfo.proj_github}"></span><br>
+    </div>
+  </div>
+</body>
+</html>

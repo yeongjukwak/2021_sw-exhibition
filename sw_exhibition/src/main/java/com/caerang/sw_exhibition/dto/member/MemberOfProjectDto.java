@@ -10,14 +10,12 @@ import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
-@Alias("MemberDto")
+@Alias("MemberOfProjectDto")
 @NoArgsConstructor
 @AllArgsConstructor
-public class MemberDto {
-    @NotNull private String mem_id;
+public class MemberOfProjectDto {
     @NotNull private String mem_name;
     @NotNull private String mem_team;
     @NotNull private int mem_grade;
-    private String mem_github;
     @NotNull private String mem_major;
 }

@@ -5,12 +5,14 @@
 
 <mapper namespace="com.caerang.sw_exhibition.mapper.member.MemberMapper">
 
-    <select id="teamMemberList" parameterType="String" resultType="MemberDto">
-        SELECT * FROM member WHERE mem_team = #{team}
+    <select id="memberListOfTeam" parameterType="String" resultType="MemberOfTeamDto">
+        SELECT mem_name, mem_grade, mem_github, mem_major
+        FROM member
+        WHERE mem_team = #{team}
     </select>
 
-    <select id="projectMemberList" parameterType="String" resultType="MemberDto">
-        SELECT mem.mem_id, mem.mem_name, mem.mem_team, mem.mem_grade, mem.mem_email, mem.mem_github, mem.mem_major
+    <select id="memberListOfProject" parameterType="String" resultType="MemberOfProjectDto">
+        SELECT mem.mem_name, mem.mem_team, mem.mem_grade, mem.mem_major
         FROM member AS mem LEFT JOIN proj_of_mem AS pom
         ON mem.mem_id = pom.mem_id
         WHERE pom.proj_name = #{title}

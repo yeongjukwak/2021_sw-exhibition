@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Guestbook</title>
+</head>
+<body>
+  <h3>방명록 작성================</h3>
+  <form action="/guestbook" method="post">
+    작성자: <input type="text" name="writer"/>
+    내용: <input type="text" name="content"/>
+    <input type="submit" value="submit"/>
+  </form>
+  <hr>
+  <h3>방명록 리스트 ===============</h3>
+  <div th:each="list : ${guestbookList}">
+    작성자: <p th:text="${list.guest_writer}"></p>
+    내용: <p th:text="${list.guest_content}"></p>
+    작성일: <p th:text="${list.guest_date}"></p>
+    <hr>
+  </div>
+</body>
+</html>

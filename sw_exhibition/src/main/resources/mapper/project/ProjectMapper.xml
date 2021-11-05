@@ -5,13 +5,12 @@
 
 <mapper namespace="com.caerang.sw_exhibition.mapper.project.ProjectMapper">
 
-    <select id="projectList" parameterType="String" resultType="String">
-        SELECT proj_name FROM project WHERE proj_developField = #{field}
+    <select id="projectList" resultType="ProjectListDto">
+        SELECT proj_name, proj_developField FROM project
     </select>
 
-    <select id="projectDetail" parameterType="Map" resultType="ProjectDto">
-        SELECT * FROM project
-        WHERE proj_developField = #{field} AND proj_name = #{title}
+    <select id="projectDetail" parameterType="String" resultType="ProjectDto">
+        SELECT * FROM project WHERE proj_name = #{title}
     </select>
 
 </mapper>
