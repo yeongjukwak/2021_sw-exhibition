@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Project List</title>
+</head>
+<body>
+  <ul>
+    <li th:each="list : ${projectList}">
+      <a th:href="@{/project(title=${list.proj_name})}" th:text="${list.proj_name}" data-type="-"></a>
+    </li>
+  </ul>
+</body>
+</html>

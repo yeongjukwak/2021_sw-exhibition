@@ -37,12 +37,12 @@ public class HomeController {
     }
 
     /* 팀 리스트 페이지 */
-    @GetMapping("/team")
-    public String teamList() {
-        log.info("[GET] URI = /team");
-
-        return "team";
-    }
+//    @GetMapping("/team")
+//    public String teamList() {
+//        log.info("[GET] URI = /team");
+//
+//        return "team";
+//    }
 
     /* 개발 분야별 프로젝트 리스트 또는 프로젝트 상세보기 */
     @GetMapping("/project")
@@ -80,26 +80,26 @@ public class HomeController {
     }
 
     /* 방명록 페이지 */
-    @GetMapping("/guestbook")
-    public String guestbookList(Model model) {
-        log.info("[GET] URI = /Guestbook");
-
-        List<GuestbookDto> guestbookDtoList = guestbookService.guestbookList();
-        model.addAttribute("guestbookList", guestbookDtoList);
-
-        return "guestbook";
-    }
+//    @GetMapping("/guestbook")
+//    public String guestbookList(Model model) {
+//        log.info("[GET] URI = /Guestbook");
+//
+//        List<GuestbookDto> guestbookDtoList = guestbookService.guestbookList();
+//        model.addAttribute("guestbookList", guestbookDtoList);
+//
+//        return "guestbook";
+//    }
 
     /* 방명록 등록 */
-    @PostMapping("/guestbook")
-    public String addGuestbook(HttpServletRequest request) {
-        log.info("[POST] URI = /Guestbook");
-
-        String writer = request.getParameter("writer");
-        String content = request.getParameter("content");
-
-        guestbookService.addGuestbook(writer, content);
-
-        return "redirect:/guestbook";
-    }
+//    @PostMapping("/guestbook")
+//    public String addGuestbook(HttpServletRequest request) {
+//        log.info("[POST] URI = /Guestbook");
+//
+//        String writer = request.getParameter("writer");
+//        String content = request.getParameter("content");
+//
+//        guestbookService.addGuestbook(writer, content);
+//
+//        return "redirect:/guestbook";
+//    }
 }

@@ -1,6 +1,5 @@
 package com.caerang.sw_exhibition.controller;
 
-import com.caerang.sw_exhibition.dto.member.MemberDto;
 import com.caerang.sw_exhibition.dto.member.MemberOfTeamDto;
 import com.caerang.sw_exhibition.service.member.MemberService;
 import lombok.RequiredArgsConstructor;
@@ -29,12 +28,26 @@ public class TeamController {
         List<MemberOfTeamDto> memberList = memberService.memberListOfTeam(team);
 
         if(memberList.isEmpty()){ // not found
-            log.error("[404] url=/member/{}", team);
+            log.error("[404] url=/team/{}", team);
 
             return "/error/404";
         }
 
+        /* 팀명 설정 */
+        String teamName;
+        if(!team.equals("core"))
+            teamName = "core";
+        else if(!team.equals("raon"))
+            teamName = "raon";
+        else if(!team.equals("latte"))
+            teamName = "latte";
+        else if(!team.equals("deeplearning"))
+            teamName = "deeplearning";
+        else
+            teamName = "none";
+
+        model.addAttribute("teamName", teamName);
         model.addAttribute("memberList", memberList);
-        return "member";
+        return "team";
     }
 }

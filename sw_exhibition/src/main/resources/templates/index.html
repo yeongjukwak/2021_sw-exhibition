@@ -1,14 +1,104 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>home</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2021_SW_Exhibition</title>
+  <link rel="stylesheet" href="../static/css/style.css">
+  <script src="../static/js/main.js" defer></script>
 </head>
+
 <body>
-  <ul>
-    <li><a href="/team">Team List</a></li>
-    <li><a href="/project">Project List</a></li>
-    <li><a href="/guestbook">Guestbook</a></li>
-  </ul>
+  <!-- 전시회 입장 페이지 (동아리 및 전시회 소개) 시작 -->
+  <div class="first__page">
+
+    <h1>씨애랑</h1>
+    <h1>2021 SOFTWARE EXHIBITION</h1>
+    <button class="open-btn">입장하기</button>
+  </div>
+  <!-- 전시회 입장 페이지 (동아리 및 전시회 소개) 끝 -->
+  ‹
+  <!-- 메인 페이지 시작 (팀 별로 구분) -->
+  <div class="main_pc">
+    <ul class="main_menu">
+      <!-- 팀 라온 -->
+      <li style="width: calc(25%);">
+        <div class="bgimg">
+          <img src="../static/images/raon.jpg" alt="">
+        </div>
+        <a href="team/raon" onmouseover="pcMouseOverFn(this);" onmouseout="pcMouseOutFn(this);">
+          <img src="../static/images/raon-text.png" alt="">
+        </a>
+        <div class="white_mask"></div>
+      </li>
+      <!-- 팀 라떼 -->
+      <li style="width: calc(25%);">
+        <div class="bgimg">
+          <img src="../static/images/latte.jpg" alt="">
+        </div>
+        <a href="team/latte" onmouseover="pcMouseOverFn(this);" onmouseout="pcMouseOutFn(this);">
+          <img src="../static/images/latte-text.png" alt="">
+        </a>
+        <div class="white_mask"></div>
+      </li>
+      <!-- 팀 코어 -->
+      <li style="width: calc(25%);">
+        <div class="bgimg">
+          <img src="../static/images/core.jpg" alt="">
+        </div>
+        <a href="/team/core" onmouseover="pcMouseOverFn(this);" onmouseout="pcMouseOutFn(this);">
+          <img src="../static/images/core-text.png" alt="">
+        </a>
+        <div class="white_mask"></div>
+      </li>
+      <!-- 팀 딥러닝 -->
+      <li style="width: calc(25%);">
+        <div class="bgimg">
+          <img src="../static/images/tag.jpg" alt="">
+        </div>
+        <a href="/team/deeplearning" onmouseover="pcMouseOverFn(this);" onmouseout="pcMouseOutFn(this);">
+          <img src="../static/images/tag-text.png" alt="">
+        </a>
+        <div class="white_mask"></div>
+      </li>
+    </ul>
+  </div>
+
+
+  <script>
+    'use strict'
+    const first_page = document.querySelector('.first__page');
+    const main_pc = document.querySelector('.main_pc');
+    const enter_exhibition = document.querySelector('.open-btn');
+
+    enter_exhibition.addEventListener('click', () => {
+      first_page.style.WebkitAnimation = "fadeOut 1s";
+      first_page.style.Animation = "fadeOut 1s";
+      setTimeout(() => {
+        main_pc.style.WebkitAnimation = "fadeIn 1s";
+        main_pc.style.Animation = "fadeIn 1s";
+        setTimeout(() => {
+          first_page.style.display = "none";
+          main_pc.style.display = "block";
+        }, 450);
+      }, 450);
+    });
+
+    function pcMouseOverFn(x) {
+      var imgSrc = document.querySelector('.bgimg').find('img').attr('src');
+      var fpath = imgSrc;
+      fpath = fpath.replace(/\\/g, '/');
+      var fname = fpath.substring(fpath.lastIndexOf('/') + 1, fpath.lastIndexOf('.'));
+      $(x).find('img').attr('src', imgSrc.replace(fname, fname + '_w'));
+    }
+
+    function pcMouseOutFn(x) {
+      var imgSrc = $(x).find('img').attr('src');
+      $(x).find('img').attr('src', imgSrc.replace('_w', ''));
+    }
+  </script>
 </body>
+
 </html>
