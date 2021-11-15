@@ -1,6 +1,7 @@
 package com.caerang.sw_exhibition.controller;
 
 import com.caerang.sw_exhibition.dto.member.MemberOfTeamDto;
+import com.caerang.sw_exhibition.dto.member.TeamDescDto;
 import com.caerang.sw_exhibition.service.member.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -33,21 +34,21 @@ public class TeamController {
             return "/error/404";
         }
 
-        /* 팀명 설정 */
-        String teamName;
-        if(!team.equals("core"))
-            teamName = "core";
-        else if(!team.equals("raon"))
-            teamName = "raon";
-        else if(!team.equals("latte"))
-            teamName = "latte";
-        else if(!team.equals("deeplearning"))
-            teamName = "deeplearning";
+        /* 팀 설명 */
+        TeamDescDto teamDescDto = new TeamDescDto();
+        if(team.equals("core"))
+            teamDescDto = new TeamDescDto("core", "임베디드 분야", "2학년 나영훈");
+        else if(team.equals("raon"))
+            teamDescDto = new TeamDescDto("raon", "게임 분야", "2학년 구준휘");
+        else if(team.equals("latte"))
+            teamDescDto = new TeamDescDto("latte", "앱 분야", "2학년 윤태영");
+        else if(team.equals("deeplearning"))
+            teamDescDto = new TeamDescDto("deeplearning", "딥러닝 분야", "3학년 박서정");
         else
-            teamName = "none";
+            teamDescDto = new TeamDescDto("none", "none", "none");
 
-        model.addAttribute("teamName", teamName);
-        model.addAttribute("memberList", memberList);
-        return "team";
+        model.addAttribute("team_info", teamDescDto);
+        model.addAttribute("mem_list", memberList);
+        return "member";
     }
 }

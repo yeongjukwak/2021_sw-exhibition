@@ -1,15 +1,37 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>Team List</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../static/css/style.css">
+  <script src="../static/js/main.js" defer></script>
+  <title>팀 소개</title>
 </head>
 <body>
-  <ul>
-    <li><a href="/team/core">Team Core</a></li>
-    <li><a href="/team/latte">Team Latte</a></li>
-    <li><a href="/team/raon">Team Raon</a></li>
-    <li><a href="/team/deeplearning">Team DeepLearning</a></li>
-  </ul>
+  <section id="team" class="section">
+    <div class="section__container">
+      <h1 th:text="${teamName}"></h1>
+      <h3>Member</h3>
+      <div class="team__description"> <!-- DB로? 아니면 그냥 controller에서? -->
+        <p>팀 소개가 들어갈 박스 입니다. 무엇을 주로 하는 팀인지에 대한 소개</p>
+        <p>팀장 이름 및 정보</p>
+      </div>
+      <div class="team__member">
+        <span th:each="mem : ${memberList}">
+          <a th:href="${mem.mem_github}" class="member" target="blank">
+            <img src="" alt="" class="member__img">
+            <div class="member__description">
+            </div>
+            <div>
+              <h3 th:text="${mem.mem_name}"></h3>
+              <p><span th:text="${mem.mem_major}"></span><br><span th:text="${mem.mem_grade} + '학년'"></span></p>
+            </div>
+          </a>
+        </span>
+      </div>
+    </div>
+  </section>
 </body>
 </html>

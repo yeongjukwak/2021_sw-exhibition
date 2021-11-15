@@ -1,119 +1,68 @@
 <!DOCTYPE html>
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org">
+
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>분야 별 작품 페이지</title>
-  <link rel="stylesheet" href="../static/css/style.css">
-  <script src="../static/js/main.js" defer></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>분야 별 작품 페이지</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <script src="../static/js/main.js" defer></script>
 </head>
+
 <body>
-  <!-- projects -->
-  <section id="work" class="section">
-    <div class="section__container">
-        <h1>씨애랑 분야 별 작품 모음 페이지</h1>
-        <h3>Projects</h3>
-        <div class="work__categories">
-            <button class="category__btn selected" data-filter="*">
-                ALL<span class="category__count">10</span>
-            </button>
-            <button class="category__btn" data-filter="Web">
-                Web<span class="category__count">5</span>
-            </button>
-            <button class="category__btn" data-filter="Game">
-                Game<span class="category__count">3</span>
-            </button>
-            <button class="category__btn" data-filter="Application">
-                Application<span class="category__count">2</span>
-            </button>
+    <!-- Navbar -->
+    <nav id="navbar">
+        <div class="navbar__logo">
+            <i class="fab fa-diaspora"></i>
+            <a href="/">Caerang SW 전시회</a>
+        </div>
+        <ul class="navbar__menu">
+            <a href="/team"><li class="navbar__menu__item active">Team</li></a>
+            <a href="/project"><li class="navbar__menu__item">Projects</li></a>
+            <a href="/guestbook"><li class="navbar__menu__item">Guestbook</li></a>
+        </ul>
+
+        <!-- Toggle button -->
+        <button class="navbar__toggle-btn">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+    <!-- projects -->
+    <section id="work" class="section">
+        <div class="section__container">
+            <h1>씨애랑 분야 별 작품 모음 페이지</h1>
+            <h3>Projects</h3>
+            <div class="work__categories">
+                <button class="category__btn selected" data-filter="*">
+                    ALL<span class="category__count">10</span>
+                </button>
+                <button class="category__btn" data-filter="web">
+                    Web<span class="category__count">5</span>
+                </button>
+                <button class="category__btn" data-filter="game">
+                    Game<span class="category__count">3</span>
+                </button>
+                <button class="category__btn" data-filter="Application">
+                    Application<span class="category__count">2</span>
+                </button>
+            </div>
+
+            <div class="work__projects">
+              <span th:each="proj : ${proj_list}">
+                <a th:href="@{/project(title=${proj.proj_name})}" class="project" target="blank" th:attr="data-type=${proj.proj_developField}">
+                    <img src="../static/images/project3.png" alt="project1" class="project__img">
+                    <div class="project__description">
+                        <h3 th:text="${proj.proj_name}"></h3>
+                        <span>~~~을 이용한 프로젝트 입니다.</span>
+                    </div>
+                </a>
+              </span>
+            </div>
         </div>
 
-        <div class="work__projects">
-          <span th:each="proj : ${projectList}">
-            <a th:href="@{/project(title=${proj.proj_name})}" class="project" target="blank" data-type="Web">
-              <img src="../static/images/project3.png" alt="project1" class="project__img">
-              <div class="project__description">
-                <h3 th:text="${proj.proj_name}"></h3>
-                <span>~~~을 이용한 프로젝트 입니다.</span>
-              </div>
-            </a>
-          </span>
-<!--            <a href="https://github.com/seungwanHam" class="project" target="blank" data-type="Web">-->
-<!--                <img src="./img/project3.png" alt="project1" class="project__img">-->
-<!--                <div class="project__description">-->
-<!--                    <h3>Project1</h3>-->
-<!--                    <span>~~~을 이용한 프로젝트 입니다.</span>-->
-<!--                </div>-->
-<!--            </a>-->
-<!--            <a href="https://github.com/seungwanHam" class="project" target="blank" data-type="Web">-->
-<!--                <img src="./img/project3.png" alt="project2" class="project__img">-->
-<!--                <div class="project__description">-->
-<!--                    <h3>Project2</h3>-->
-<!--                    <span>~~~을 이용한 프로젝트 입니다.</span>-->
-<!--                </div>-->
-<!--            </a>-->
-<!--            <a href="https://github.com/seungwanHam" class="project" target="blank" data-type="Web">-->
-<!--                <img src="./img/project3.png" alt="project3" class="project__img">-->
-<!--                <div class="project__description">-->
-<!--                    <h3>Project3</h3>-->
-<!--                    <span>~~~을 이용한 프로젝트 입니다.</span>-->
-<!--                </div>-->
-<!--            </a>-->
-<!--            <a href="https://github.com/seungwanHam" class="project" target="blank" data-type="Web">-->
-<!--              <img src="./img/project3.png" alt="project4" class="project__img">-->
-<!--              <div class="project__description">-->
-<!--                  <h3>Project4</h3>-->
-<!--                  <span>~~~을 이용한 프로젝트 입니다.</span>-->
-<!--              </div>-->
-<!--          </a>-->
-<!--          <a href="https://github.com/seungwanHam" class="project" target="blank" data-type="Web">-->
-<!--            <img src="./img/project3.png" alt="project9" class="project__img">-->
-<!--            <div class="project__description">-->
-<!--                <h3>Project9</h3>-->
-<!--                <span>~~~을 이용한 프로젝트 입니다.</span>-->
-<!--            </div>-->
-<!--          </a>-->
-<!--            <a href="https://github.com/seungwanHam" class="project" target="blank" data-type="Game">-->
-<!--                <img src="./img/project3.png" alt="project10" class="project__img">-->
-<!--                <div class="project__description">-->
-<!--                    <h3>Project10</h3>-->
-<!--                    <span>~~~을 이용한 프로젝트 입니다.</span>-->
-<!--                </div>-->
-<!--            </a>-->
-<!--            <a href="https://github.com/seungwanHam" class="project" target="blank" data-type="Game">-->
-<!--                <img src="./img/project3.png" alt="project5" class="project__img">-->
-<!--                <div class="project__description">-->
-<!--                    <h3>Project5</h3>-->
-<!--                    <span>~~~을 이용한 프로젝트 입니다.</span>-->
-<!--                </div>-->
-<!--            </a>-->
-<!--            <a href="https://github.com/seungwanHam" class="project" target="blank" data-type="Game">-->
-<!--                <img src="./img/project3.png" alt="project6" class="project__img">-->
-<!--                <div class="project__description">-->
-<!--                    <h3>Project6</h3>-->
-<!--                    <span>~~~을 이용한 프로젝트 입니다.</span>-->
-<!--                </div>-->
-<!--            </a>-->
-<!--            <a href="https://github.com/seungwanHam" class="project" target="blank" data-type="Application">-->
-<!--                <img src="./img/project3.png" alt="project7" class="project__img">-->
-<!--                <div class="project__description">-->
-<!--                    <h3>Project7</h3>-->
-<!--                    <span>~~~을 이용한 프로젝트 입니다.</span>-->
-<!--                </div>-->
-<!--            </a>-->
-<!--            <a href="https://github.com/seungwanHam" class="project" target="blank" data-type="Application">-->
-<!--                <img src="./img/project3.png" alt="project8" class="project__img">-->
-<!--                <div class="project__description">-->
-<!--                    <h3>Project8</h3>-->
-<!--                    <span>~~~을 이용한 프로젝트 입니다.</span>-->
-<!--                </div>-->
-<!--            </a>-->
-
-        </div>
-    </div>
-
-</section>
+    </section>
 </body>
+
 </html>

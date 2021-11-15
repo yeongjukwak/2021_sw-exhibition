@@ -6,12 +6,14 @@
 <mapper namespace="com.caerang.sw_exhibition.mapper.guestbook.GuestbookMapper">
 
     <select id="guestbookList" resultType="GuestBookDto">
-        SELECT guest_writer, guest_content, guest_date FROM guestbook
+        SELECT guest_writer, guest_content, guest_date
+        FROM guestbook
+        ORDER BY guest_id DESC;
     </select>
 
-    <insert id="addGuestbook" parameterType="Map">
+    <insert id="addGuestbook" parameterType="GuestBookAddDto">
         INSERT INTO guestbook (guest_writer, guest_content)
-        VALUES (#{writer}, #{content})
+        VALUES (#{guest_writer}, #{guest_content})
     </insert>
 
 </mapper>

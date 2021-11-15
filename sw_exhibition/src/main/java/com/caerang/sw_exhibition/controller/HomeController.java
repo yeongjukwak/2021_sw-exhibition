@@ -1,6 +1,5 @@
 package com.caerang.sw_exhibition.controller;
 
-import com.caerang.sw_exhibition.dto.guestbook.GuestbookDto;
 import com.caerang.sw_exhibition.dto.member.MemberOfProjectDto;
 import com.caerang.sw_exhibition.dto.project.ProjectDto;
 import com.caerang.sw_exhibition.dto.project.ProjectListDto;
@@ -12,10 +11,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Objects;
 
@@ -32,17 +29,22 @@ public class HomeController {
     @GetMapping("/")
     public String home() {
         log.info("[GET] URI = /");
-
         return "index";
     }
 
     /* 팀 리스트 페이지 */
-//    @GetMapping("/team")
-//    public String teamList() {
-//        log.info("[GET] URI = /team");
-//
-//        return "team";
-//    }
+    @GetMapping("/team")
+    public String teamList() {
+        log.info("[GET] URI = /team");
+        return "team";
+    }
+
+    /* 방명록 페이지 */
+    @GetMapping("/guestbook")
+    public String guestbook() {
+        log.info("[GET] URI = /guestbook");
+        return "guestbook";
+    }
 
     /* 개발 분야별 프로젝트 리스트 또는 프로젝트 상세보기 */
     @GetMapping("/project")
@@ -52,12 +54,13 @@ public class HomeController {
 
             List<ProjectListDto> projectListDtoList = projectService.projectList();
 
-            if(projectListDtoList.isEmpty()) { // not found
+            // 프로젝트 리스트가 존재하지 않는 경우 (not found)
+            if(projectListDtoList.isEmpty()) {
                 log.error("[404] URI = /project");
                 return "/error/404";
             }
 
-            model.addAttribute("projectList", projectListDtoList);
+            model.addAttribute("proj_list", projectListDtoList);
             return "project";
 
         }else { // 프로젝트 상세보기
@@ -65,41 +68,19 @@ public class HomeController {
 
             ProjectDto projectDto = projectService.projectDetail(title);
 
-            if(Objects.isNull(projectDto)) { // not found
+            // 프로젝트 상세정보가 없는 경우 (not found)
+            if(Objects.isNull(projectDto)) {
                 log.error("[404] URI = /project?title={}", title);
                 return "/error/404";
             }
 
+            // 해당 프로젝트에 참여한 인원
             List<MemberOfProjectDto> memberOfProjectDtoList = memberService.memberListOfProject(title);
 
-            model.addAttribute("projectInfo", projectDto);
-            model.addAttribute("memberList", memberOfProjectDtoList);
+            model.addAttribute("proj_desc", projectDto);
+            model.addAttribute("mem_list", memberOfProjectDtoList);
 
-            return "detail";
+            return "project_description";
         }
     }
-
-    /* 방명록 페이지 */
-//    @GetMapping("/guestbook")
-//    public String guestbookList(Model model) {
-//        log.info("[GET] URI = /Guestbook");
-//
-//        List<GuestbookDto> guestbookDtoList = guestbookService.guestbookList();
-//        model.addAttribute("guestbookList", guestbookDtoList);
-//
-//        return "guestbook";
-//    }
-
-    /* 방명록 등록 */
-//    @PostMapping("/guestbook")
-//    public String addGuestbook(HttpServletRequest request) {
-//        log.info("[POST] URI = /Guestbook");
-//
-//        String writer = request.getParameter("writer");
-//        String content = request.getParameter("content");
-//
-//        guestbookService.addGuestbook(writer, content);
-//
-//        return "redirect:/guestbook";
-//    }
 }

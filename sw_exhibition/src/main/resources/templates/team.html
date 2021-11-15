@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"
-      xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,140 +8,50 @@
   <script src="../static/js/main.js" defer></script>
   <title>팀 소개</title>
 </head>
-
 <body>
-  <section id="team" class="section">
-    <div class="section__container">
-      <h1 th:text="${teamName}"></h1>
-      <h3>Member</h3>
-
-      <!-- DB로? 아니면 그냥 controller에서? -->
-      <div class="team__description">
-        <p>팀 소개가 들어갈 박스 입니다. 무엇을 주로 하는 팀인지에 대한 소개</p>
-        <p>팀장 이름 및 정보</p>
-      </div>
-
-      <div class="team__member">
-        <span th:each="mem : ${memberList}">
-          <a href="https://github.com/seungwanHam" class="member" target="blank">
-            <img src="" alt="" class="member__img">
-            <div class="member__description">
-              <h3 th:text="${mem.mem_name}"></h3>
-              <span>학번, 학년, 이메일, 깃헙주소</span>
-            </div>
-            <div>
-              <h3 th:text="${mem.mem_name}"></h3>
-<!--              <span>20175172</span>--> <!-- 학번 대신 학과로 변경 -->
-                <span th:text="${mem.mem_major}"></span>
-                <span th:text="${mem.mem_grade} + '학년'"></span>
-<!--                <span>seungwan7511@gmail.com</span>--> <!-- 이메일 삭제 -->
-<!--                <span>https://github.com/seungwanHam</span>--> <!-- 따로 url로 접속 -->
-            </div>
-          </a>
-        </span>
-<!--        <a href="https://github.com/seungwanHam" class="member" target="blank">-->
-<!--          <img src="" alt="" class="member__img">-->
-<!--          <div class="member__description">-->
-<!--            <h3>함승완</h3>-->
-<!--            <span>학번, 학년, 이메일, 깃헙주소</span>-->
-<!--          </div>-->
-<!--          <div>-->
-<!--            <h3>함승완</h3>-->
-<!--            <span>20175172</span>-->
-<!--              <span>3학년</span>-->
-<!--              <span>seungwan7511@gmail.com</span>-->
-<!--              <span>https://github.com/seungwanHam</span>-->
-<!--          </div>-->
-<!--        </a>-->
-
-<!--        <a href="https://github.com/seungwanHam" class="member" target="blank">-->
-<!--          <img src="" alt="" class="member__img">-->
-<!--          <div class="member__description">-->
-<!--            <h3>함승완</h3>-->
-<!--            <span>학번, 학년, 이메일, 깃헙주소</span>-->
-<!--          </div>-->
-<!--          <div>-->
-<!--            <h3>곽영주</h3>-->
-<!--            <span>20175172</span>-->
-<!--              <span>3학년</span>-->
-<!--              <span>seungwan7511@gmail.com</span>-->
-<!--              <span>https://github.com/seungwanHam</span>-->
-<!--          </div>-->
-<!--        </a>-->
-<!--        <a href="https://github.com/seungwanHam" class="member" target="blank">-->
-<!--          <img src="" alt="member3" class="member__img">-->
-<!--          <div class="member__description">-->
-<!--            <h3>함승완</h3>-->
-<!--            <span>학번, 학년, 이메일, 깃헙주소</span>-->
-<!--          </div>-->
-<!--        </a>-->
-<!--        <a href="https://github.com/seungwanHam" class="member" target="blank">-->
-<!--          <img src="" alt="member4" class="member__img">-->
-<!--          <div class="member__description">-->
-<!--            <h3>함승완</h3>-->
-<!--            <span>학번, 학년, 이메일, 깃헙주소</span>-->
-<!--          </div>-->
-<!--        </a>-->
-<!--        <a href="https://github.com/seungwanHam" class="member" target="blank">-->
-<!--          <img src="" alt="member5" class="member__img">-->
-<!--          <div class="member__description">-->
-<!--            <h3>함승완</h3>-->
-<!--            <span>학번, 학년, 이메일, 깃헙주소</span>-->
-<!--          </div>-->
-<!--        </a>-->
-<!--        <a href="https://github.com/seungwanHam" class="member" target="blank">-->
-<!--          <img src="" alt="member6" class="member__img">-->
-<!--          <div class="member__description">-->
-<!--            <h3>함승완</h3>-->
-<!--            <span>학번, 학년, 이메일, 깃헙주소</span>-->
-<!--          </div>-->
-<!--        </a>-->
-<!--        <a href="https://github.com/seungwanHam" class="member" target="blank">-->
-<!--          <img src="" alt="member7" class="member__img">-->
-<!--          <div class="member__description">-->
-<!--            <h3>함승완</h3>-->
-<!--            <span>학번, 학년, 이메일, 깃헙주소</span>-->
-<!--          </div>-->
-<!--        </a>-->
-<!--        <a href="https://github.com/seungwanHam" class="member" target="blank">-->
-<!--          <img src="" alt="member8" class="member__img">-->
-<!--          <div class="member__description">-->
-<!--            <h3>함승완</h3>-->
-<!--            <span>학번, 학년, 이메일, 깃헙주소</span>-->
-<!--          </div>-->
-<!--        </a>-->
-<!--        <a href="https://github.com/seungwanHam" class="member" target="blank">-->
-<!--          <img src="" alt="member9" class="member__img">-->
-<!--          <div class="member__description">-->
-<!--            <h3>함승완</h3>-->
-<!--            <span>학번, 학년, 이메일, 깃헙주소</span>-->
-<!--          </div>-->
-<!--        </a>-->
-<!--        <a href="https://github.com/seungwanHam" class="member" target="blank">-->
-<!--          <img src="" alt="member10" class="member__img">-->
-<!--          <div class="member__description">-->
-<!--            <h3>함승완</h3>-->
-<!--            <span>학번, 학년, 이메일, 깃헙주소</span>-->
-<!--          </div>-->
-<!--        </a>-->
-<!--        <a href="https://github.com/seungwanHam" class="member" target="blank">-->
-<!--          <img src="" alt="member11" class="member__img">-->
-<!--          <div class="member__description">-->
-<!--            <h3>함승완</h3>-->
-<!--            <span>학번, 학년, 이메일, 깃헙주소</span>-->
-<!--          </div>-->
-<!--        </a>-->
-<!--        <a href="https://github.com/seungwanHam" class="member" target="blank">-->
-<!--          <img src="" alt="member12" class="member__img">-->
-<!--          <div class="member__description">-->
-<!--            <h3>함승완</h3>-->
-<!--            <span>학번, 학년, 이메일, 깃헙주소</span>-->
-<!--          </div>-->
-<!--        </a>-->
-      </div>
-
-    </div>
-  </section>
+  <!-- 메인 페이지 시작 (팀 별로 구분) -->
+  <div class="main_pc">
+    <ul class="main_menu">
+      <!-- 팀 라온 -->
+      <li>
+        <div class="bgimg">
+          <img src="../static/images/raon.jpg" alt="">
+        </div>
+        <a href="/team/raon">
+          <img src="../static/images/raon-text.png" alt="">
+        </a>
+        <div class="white_mask"></div>
+      </li>
+      <!-- 팀 라떼 -->
+      <li>
+        <div class="bgimg">
+          <img src="../static/images/latte.jpg" alt="">
+        </div>
+        <a href="/team/latte">
+          <img src="../static/images/latte-text.png" alt="">
+        </a>
+        <div class="white_mask"></div>
+      </li>
+      <!-- 팀 코어 -->
+      <li>
+        <div class="bgimg">
+          <img src="../static/images/core.jpg" alt="">
+        </div>
+        <a href="/team/core">
+          <img src="../static/images/core-text.png" alt="">
+        </a>
+        <div class="white_mask"></div>
+      </li>
+      <!-- 팀 딥러닝 -->
+      <li>
+        <div class="bgimg">
+          <img src="../static/images/tag.jpg" alt="">
+        </div>
+        <a href="/team/deeplearning">
+          <img src="../static/images/tag-text.png" alt="">
+        </a>
+      </li>
+    </ul>
+  </div>
 </body>
-
 </html>
