@@ -3,7 +3,6 @@ package com.caerang.sw_exhibition.controller;
 import com.caerang.sw_exhibition.dto.member.MemberOfProjectDto;
 import com.caerang.sw_exhibition.dto.project.ProjectDto;
 import com.caerang.sw_exhibition.dto.project.ProjectListDto;
-import com.caerang.sw_exhibition.service.guestbook.GuestbookService;
 import com.caerang.sw_exhibition.service.member.MemberService;
 import com.caerang.sw_exhibition.service.project.ProjectService;
 import lombok.RequiredArgsConstructor;
@@ -23,7 +22,6 @@ public class HomeController {
 
     private final ProjectService projectService;
     private final MemberService memberService;
-    private final GuestbookService guestbookService;
 
     /* 메인 페이지 */
     @GetMapping("/")
@@ -57,7 +55,7 @@ public class HomeController {
             // 프로젝트 리스트가 존재하지 않는 경우 (not found)
             if(projectListDtoList.isEmpty()) {
                 log.error("[404] URI = /project");
-                return "/error/404";
+                return "error/404";
             }
 
             model.addAttribute("proj_list", projectListDtoList);
@@ -71,7 +69,7 @@ public class HomeController {
             // 프로젝트 상세정보가 없는 경우 (not found)
             if(Objects.isNull(projectDto)) {
                 log.error("[404] URI = /project?title={}", title);
-                return "/error/404";
+                return "error/404";
             }
 
             // 해당 프로젝트에 참여한 인원

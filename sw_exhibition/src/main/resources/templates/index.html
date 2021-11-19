@@ -1,24 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
 
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>2021_SW_Exhibition</title>
-  <link rel="stylesheet" href="../static/css/style.css">
-  <script src="../static/js/main.js" defer></script>
+  <title>2021 씨애랑 SW-Exhibition</title>
+  <link rel="stylesheet" th:href="@{/static/css/style.css}">
+  <script th:src="@{/static/js/main.js}" defer></script>
 </head>
 
 <body>
+  <ul class="skipnavi">
+    <li><a href="#container">본문내용</a></li>
+  </ul>
   <!-- 전시회 입장 페이지 (동아리 및 전시회 소개) 시작 -->
     <div class="first__page">
       <h1>씨애랑</h1>
       <h1>2021 SOFTWARE EXHIBITION</h1>
       <div class="link-btn">
-        <a href="./team"><button class="open-btn">TEAM</button></a>
-        <a href="./project"><button class="open-btn">PROJECT</button></a>
-        <a href="./guestbook"><button class="open-btn">GUESTBOOK</button></a>
+        <a th:href="@{/team}"><button class="open-btn">TEAM</button></a>
+        <a th:href="@{/project}"><button class="open-btn">PROJECT</button></a>
+        <a th:href="@{/guestbook}"><button class="open-btn">GUESTBOOK</button></a>
       </div>
     </div> 
   <!-- 전시회 입장 페이지 (동아리 및 전시회 소개) 끝 -->

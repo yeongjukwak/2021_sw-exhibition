@@ -1,27 +1,41 @@
 <!DOCTYPE html>
-<html lang="en"
+<html lang="ko"
       xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>분야 별 작품 페이지</title>
-    <link rel="stylesheet" href="../static/css/style.css">
-    <script src="../static/js/main.js" defer></script>
+    <title>2021 씨애랑 | Project</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Jua&family=Roboto+Slab:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/static/css/style.css}">
+    <script src="https://kit.fontawesome.com/9eb162ac0d.js" crossorigin="anonymous"></script>
+    <script defer th:src="@{/static/js/main.js}"></script>
 </head>
 
 <body>
+    <ul class="skipnavi">
+        <li><a href="#work">본문내용</a></li>
+    </ul>
     <!-- Navbar -->
     <nav id="navbar">
         <div class="navbar__logo">
-            <i class="fab fa-diaspora"></i>
-            <a href="/">Caerang SW 전시회</a>
+            <a th:href="@{/}">Caerang SW 전시회</a>
         </div>
         <ul class="navbar__menu">
-            <a href="/team"><li class="navbar__menu__item active">Team</li></a>
-            <a href="/project"><li class="navbar__menu__item">Projects</li></a>
-            <a href="/guestbook"><li class="navbar__menu__item">Guestbook</li></a>
+            <a th:href="@{/team}">
+                <li class="navbar__menu__item active">Team</li>
+            </a>
+            <a th:href="@{/project}">
+                <li class="navbar__menu__item">Projects</li>
+            </a>
+            <a th:href="@{/guestbook}">
+                <li class="navbar__menu__item">Guestbook</li>
+            </a>
         </ul>
 
         <!-- Toggle button -->
@@ -36,33 +50,78 @@
             <h3>Projects</h3>
             <div class="work__categories">
                 <button class="category__btn selected" data-filter="*">
-                    ALL<span class="category__count">10</span>
+                    ALL
+                    <!-- <span class="category__count">10</span> -->
                 </button>
                 <button class="category__btn" data-filter="web">
-                    Web<span class="category__count">5</span>
+                    Web
+                    <!-- <span class="category__count">5</span> -->
                 </button>
                 <button class="category__btn" data-filter="game">
-                    Game<span class="category__count">3</span>
+                    Game
+                    <!-- <span class="category__count">3</span> -->
                 </button>
-                <button class="category__btn" data-filter="Application">
-                    Application<span class="category__count">2</span>
+                <button class="category__btn" data-filter="app">
+                    Application
+                    <!-- <span class="category__count">2</span> -->
                 </button>
             </div>
 
             <div class="work__projects">
-              <span th:each="proj : ${proj_list}">
-                <a th:href="@{/project(title=${proj.proj_name})}" class="project" target="blank" th:attr="data-type=${proj.proj_developField}">
-                    <img src="../static/images/project3.png" alt="project1" class="project__img">
-                    <div class="project__description">
-                        <h3 th:text="${proj.proj_name}"></h3>
-                        <span>~~~을 이용한 프로젝트 입니다.</span>
-                    </div>
-                </a>
-              </span>
+                <span th:each="proj : ${proj_list}">
+                    <a th:href="@{/project(title=${proj.proj_name})}" class="project" target="blank" th:attr="data-type=${proj.proj_developField}">
+                        <img th:src="@{/static/images/project3.png}" alt="project1" class="project__img">
+                        <div class="project__title">
+                            <h3 th:text="${proj.proj_name}"></h3>
+                        </div>
+                        <div class="project__description">
+                            <h3 th:text="${proj.proj_name}"></h3>
+                            <span>자세히 보기</span>
+                        </div>
+                    </a>
+                </span>
             </div>
         </div>
 
     </section>
+
+    <!-- Arrow up -->
+    <button class="arrow-up">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
 </body>
+
+<script>
+    // Projects
+    const workBtnContainer = document.querySelector('.work__categories');
+    const projectContainer = document.querySelector('.work__projects');
+    const projects = document.querySelectorAll('.project');
+    workBtnContainer.addEventListener('click', (event) => {
+        const filter = event.target.dataset.filter || event.target.parentNode.dataset.filter;
+        if (filter == null) {
+            return;
+        }
+        // Remove selection from the previous item and select the new one
+        const active = document.querySelector('.category__btn.selected');
+        active.classList.remove('selected');
+        const target =
+            event.target.nodeName === 'BUTTON' ? event.target : event.target.parentNode;
+        target.classList.add('selected');
+
+        projectContainer.classList.add('anim-out');
+        setTimeout(() => {
+            projects.forEach((project) => {
+                console.log(project.dataset.type);
+                if (filter === '*' || filter === project.dataset.type) {
+                    project.classList.remove('invisible');
+                } else {
+                    project.classList.add('invisible');
+                }
+            });
+            projectContainer.classList.remove('anim-out');
+        }, 300);
+    });
+</script>
 
 </html>

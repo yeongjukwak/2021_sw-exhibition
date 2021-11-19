@@ -1,25 +1,79 @@
 <!DOCTYPE html>
 <html lang="ko"
       xmlns:th="http://www.thymeleaf.org">
+
 <head>
   <meta charset="UTF-8">
-  <title>Guestbook</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>2021 씨애랑 | Guestbook</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Jua&family=Roboto+Slab:wght@400;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" th:href="@{/static/css/style.css}">
   <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
-  <script src="../static/js/guestbook.js"></script>
+  <script src="https://kit.fontawesome.com/9eb162ac0d.js" crossorigin="anonymous"></script>
+  <script defer th:src="@{/static/js/guestbook.js}"></script>
+  <script defer th:src="@{/static/js/main.js}"></script>
   <script>
-    $(document).ready(function () {
-       guestbookList(); // 페이지 처음 진입했을 때, 방명록 리스트 불러오기
-    });
+      $(document).ready(function () {
+          guestbookList(); // 페이지 처음 진입했을 때, 방명록 리스트 불러오기
+      });
   </script>
-</head>
+
 <body>
-  <div>
-    <div>작성자: <input type="text" id="writer"/></div>
-    <div>내용: <input type="text" id="content"/></div>
-    <input type="button" onclick="addGuestbook()" value="등록"/>
+  <ul class="skipnavi">
+    <li><a href=".guest">본문내용</a></li>
+  </ul>
+  <!-- Navbar -->
+  <div id="wrap">
+    <nav id="navbar">
+      <div class="navbar__logo">
+        <a th:href="@{/}">Caerang SW 전시회</a>
+      </div>
+      <ul class="navbar__menu">
+        <a th:href="@{/team}">
+          <li class="navbar__menu__item active">Team</li>
+        </a>
+        <a th:href="@{/project}">
+          <li class="navbar__menu__item">Projects</li>
+        </a>
+        <a th:href="@{/guestbook}">
+          <li class="navbar__menu__item">Guestbook</li>
+        </a>
+      </ul>
+
+      <!-- Toggle button -->
+      <button class="navbar__toggle-btn">
+        <i class="fas fa-bars"></i>
+      </button>
+    </nav>
   </div>
-  <div id="guestbookList">
+
+  <section class="guest">
+
+    <div class="guestbook__title">Geust book</div>
+
+    <div class="input">
+      <input placeholder="이름" type="textarea" id="writer" />
+      <textarea placeholder="축하 또는 응원 메시지를 남겨주세요! 근거없는 비방 글, 욕설, 상업적인 게시글은 통보없이 삭제될 수 있습니다." id="content"></textarea>
+      <button type="button" class="input-btn">
+        <i class="fas fa-plus"></i>
+      </button>
+    </div>
+  </section>
+
+  <div class="text-wrapper">
+  </div>
 
   </div>
+
+  <!-- Arrow up -->
+  <button class="arrow-up">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
 </body>
+
 </html>

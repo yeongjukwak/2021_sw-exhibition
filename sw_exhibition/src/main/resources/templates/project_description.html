@@ -1,32 +1,39 @@
 <!DOCTYPE html>
-<html lang="en"
+<html lang="ko"
       xmlns:th="http://www.thymeleaf.org">
 
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="../static/css/style.css">
-  <script src="../static/js/main.js" defer></script>
+  <title>2021 씨애랑 | project_description</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Jua&family=Roboto+Slab:wght@400;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" th:href="@{/static/css/style.css}">
+  <script src="https://kit.fontawesome.com/9eb162ac0d.js" crossorigin="anonymous"></script>
+  <script defer th:src="@{/static/js/main.js}"></script>
 </head>
 
 <body>
-
+  <ul class="skipnavi">
+    <li><a href="#project__desc">본문내용</a></li>
+  </ul>
   <!-- Navbar -->
   <nav id="navbar">
     <div class="navbar__logo">
-      <i class="fab fa-diaspora"></i>
-      <a href="/">Caerang SW 전시회</a>
+      <a th:href="@{/}">Caerang SW 전시회</a>
     </div>
     <ul class="navbar__menu">
-      <a href="/team">
+      <a th:href="@{/team}">
         <li class="navbar__menu__item active">Team</li>
       </a>
-      <a href="/project">
+      <a th:href="@{/project}">
         <li class="navbar__menu__item">Projects</li>
       </a>
-      <a href="/guestbook">
+      <a th:href="@{/guestbook}">
         <li class="navbar__menu__item">Guestbook</li>
       </a>
     </ul>
@@ -39,16 +46,19 @@
 
   <section id="project__desc" class="section">
     <div class="project__desc__container">
-      
+
       <div class="project__info">
         <div class="project__name">
           <h4>
-            <span th:text="${proj_desc.proj_name} + ' / '"></span>
-            <span th:text="${proj_desc.proj_github}"></span>
+            <span th:text="${proj_desc.proj_name}"></span>
+            <br><br>
+            <a th:href="${proj_desc.proj_github}" target="_blank">
+              <span th:text="${proj_desc.proj_github}"></span>
+            </a>
           </h4>
-<!--          <h4>함승완 Seungwan Ham / ONLINE EXHIBITION</h4>-->
         </div>
-        <div class="student_info">
+        <div class="division__line"></div>
+        <div class="student__info">
           <span th:each="mem : ${mem_list}">
             <h4>
               <span th:text="${mem.mem_major} + ' '"></span>
@@ -56,22 +66,19 @@
               <span th:text="${mem.mem_name} + ' / '"></span>
               <span th:text="${mem.mem_team}"></span>
             </h4>
-<!--            <h4>빅데이터전공 3학년 함승완 / 딥러닝팀</h4>-->
           </span>
         </div>
       </div>
 
-      <div class="project__detail" th:utext="${proj_desc.proj_content}">
-<!--        <h3>작품 소개</h3>-->
-<!--        <h4>-->
-<!--          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ipsa, nisi minus ea beatae laboriosam quo quasi enim optio aspernatur maiores at non, sed expedita a nihil cumque ullam aliquam! Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos deserunt animi voluptatibus quos unde expedita illum. Molestias repellat, eos repudiandae exercitationem doloribus ratione qui. Tempore ullam distinctio dignissimos blanditiis minima! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi nemo beatae corporis voluptatum asperiores cumque atque ab? Nulla enim impedit exercitationem veritatis ipsum quos quae, velit quia illum unde!-->
-<!--          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ipsa, nisi minus ea beatae laboriosam quo quasi enim optio aspernatur maiores at non, sed expedita a nihil cumque ullam aliquam! Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos deserunt animi voluptatibus quos unde expedita illum. Molestias repellat, eos repudiandae exercitationem doloribus ratione qui. Tempore ullam distinctio dignissimos blanditiis minima! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi nemo beatae corporis voluptatum asperiores cumque atque ab? Nulla enim impedit exercitationem veritatis ipsum quos quae, velit quia illum unde!-->
-<!--          -->
-<!--        </h4>-->
-      </div>
+      <div class="project__detail" th:utext="${proj_desc.proj_content}"></div>
 
     </div>
   </section>
+
+  <!-- Arrow up -->
+  <button class="arrow-up">
+    <i class="fas fa-arrow-up"></i>
+  </button>
 
 </body>
 
