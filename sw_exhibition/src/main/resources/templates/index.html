@@ -6,26 +6,37 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>2021 씨애랑 SW-Exhibition</title>
-  <link rel="stylesheet" th:href="@{/static/css/style.css}">
-  <script th:src="@{/static/js/main.js}" defer></script>
+  <link rel="icon" type="image/png" th:href="@{/static/images/caerang.png}" />
+  <link rel="stylesheet" th:href="@{/static/css/main_page.css?v=1.4}">
+  <title>2021 SOFTWARE EXHIBITION</title>
 </head>
 
 <body>
-  <ul class="skipnavi">
-    <li><a href="#container">본문내용</a></li>
-  </ul>
-  <!-- 전시회 입장 페이지 (동아리 및 전시회 소개) 시작 -->
-    <div class="first__page">
-      <h1>씨애랑</h1>
-      <h1>2021 SOFTWARE EXHIBITION</h1>
-      <div class="link-btn">
-        <a th:href="@{/team}"><button class="open-btn">TEAM</button></a>
-        <a th:href="@{/project}"><button class="open-btn">PROJECT</button></a>
-        <a th:href="@{/guestbook}"><button class="open-btn">GUESTBOOK</button></a>
-      </div>
-    </div> 
-  <!-- 전시회 입장 페이지 (동아리 및 전시회 소개) 끝 -->
+  <div class="main__container">
+    <div class="made__by">
+      <p>MADE BY 26기 함승완, 곽영주</p>
+    </div>
+    <div class="main__title">
+      <span>
+        씨애랑 <br> 2021 SOFTWARE EXHIBITION
+      </span>
+    </div>
+    <div class="made__">
+      <p>C.愛.랑은 1992년부터 이어져 온 유서 깊은 한림대학교 소프트웨어융합대학 동아리입니다. <br> C 는 computer, 愛는 사랑 애, 랑은 순 우리말로 모임이라는 뜻으로 <br> 컴퓨터를 사랑하는 사람들이 만든 모임이란 뜻을 가지고 있습니다.</p>
+    </div>
+    <br>
+    <div class="link-btn">
+      <a th:href="@{/team}"><button class="open-btn">TEAM</button></a>
+      <a th:href="@{/project}"><button class="open-btn">PROJECT</button></a>
+      <a th:href="@{/guestbook}"><button class="open-btn">GUESTBOOK</button></a>
+    </div>
+  </div>
+  <!-- <div class="main__text">
+    <p>
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique natus quibusdam, possimus sit itaque fugit consectetur dolore autem, reiciendis veniam odio error ducimus quas ipsum tempora necessitatibus, non laudantium. Officiis?
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi beatae repellendus reprehenderit accusamus aperiam sequi iure rerum impedit! Illum temporibus blanditiis corporis incidunt eius cum magnam qui sunt voluptatem inventore!
+    </p>
+  </div> -->
 </body>
 
 </html>

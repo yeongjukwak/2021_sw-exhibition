@@ -5,13 +5,14 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>2021 씨애랑 | Guestbook</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" th:href="@{/static/images/caerang.png}"/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Jua&family=Roboto+Slab:wght@400;600;700&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" th:href="@{/static/css/style.css}">
+  <link rel="stylesheet" th:href="@{/static/css/style.css?v=1.4}">
   <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
   <script src="https://kit.fontawesome.com/9eb162ac0d.js" crossorigin="anonymous"></script>
   <script defer th:src="@{/static/js/guestbook.js}"></script>
@@ -21,15 +22,19 @@
           guestbookList(); // 페이지 처음 진입했을 때, 방명록 리스트 불러오기
       });
   </script>
+  <title>2021 씨애랑 | Guestbook</title>
 
 <body>
   <ul class="skipnavi">
-    <li><a href=".guest">본문내용</a></li>
+    <li><a href="#">본문내용</a></li>
   </ul>
   <!-- Navbar -->
+  <!-- nav 가 아래로 밀려 guestbook 콘텐츠와 겹치는 현상 발생, 이를 해결하기 위해 #wrap 으로 감싸고 overflow: auto 로 해결, 
+    safari는 해결 overflow: scroll 해야함 -->
   <div id="wrap">
-    <nav id="navbar">
+    <nav id="navbar" style="top: 0;">
       <div class="navbar__logo">
+        <img th:src="@{/static/images/logo.png}" alt="">
         <a th:href="@{/}">Caerang SW 전시회</a>
       </div>
       <ul class="navbar__menu">
@@ -53,7 +58,7 @@
 
   <section class="guest">
 
-    <div class="guestbook__title">Geust book</div>
+    <div class="guestbook__title">Guest book</div>
 
     <div class="input">
       <input placeholder="이름" type="textarea" id="writer" />

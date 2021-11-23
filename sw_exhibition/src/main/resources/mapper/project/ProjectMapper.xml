@@ -6,11 +6,13 @@
 <mapper namespace="com.caerang.sw_exhibition.mapper.project.ProjectMapper">
 
     <select id="projectList" resultType="ProjectListDto">
-        SELECT proj_name, proj_developField FROM project
+        SELECT proj_name, proj_developField, proj_image
+        FROM project
     </select>
 
     <select id="projectDetail" parameterType="String" resultType="ProjectDto">
-        SELECT * FROM project WHERE proj_name = #{title}
+        SELECT proj_name, proj_content, proj_github, proj_developField
+        FROM project WHERE proj_name = #{title}
     </select>
 
 </mapper>

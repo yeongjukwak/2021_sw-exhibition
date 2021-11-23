@@ -37,13 +37,13 @@ public class TeamController {
         /* 팀 설명 */
         TeamDescDto teamDescDto = new TeamDescDto();
         if(team.equals("core"))
-            teamDescDto = new TeamDescDto("core", "임베디드 분야", "2학년 나영훈");
+            teamDescDto = new TeamDescDto("Core", "아두이노, 라즈베리파이를 이용한 임베디드를 중점으로 학습", "빅데이터 2학년 나영훈");
         else if(team.equals("raon"))
-            teamDescDto = new TeamDescDto("raon", "게임 분야", "2학년 구준휘");
+            teamDescDto = new TeamDescDto("Raon", "DirectX, 서버 등을 이용한 게임 프로그래밍 학습", "콘텐츠IT 2학년 구준휘");
         else if(team.equals("latte"))
-            teamDescDto = new TeamDescDto("latte", "앱 분야", "2학년 윤태영");
-        else if(team.equals("deeplearning"))
-            teamDescDto = new TeamDescDto("deeplearning", "딥러닝 분야", "3학년 박서정");
+            teamDescDto = new TeamDescDto("Latte", "안드로이드를 이용한 모바일 프로그래밍 학습", "스마트IoT 2학년 윤태영");
+        else if(team.equals("tensor"))
+            teamDescDto = new TeamDescDto("Tensor", "파이썬 라이브러리를 이용한 인공지능 학습", "빅데이터 3학년 박서정");
         else
             teamDescDto = new TeamDescDto("none", "none", "none");
 

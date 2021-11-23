@@ -6,15 +6,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2021 씨애랑 | Project</title>
+    <link rel="icon" type="image/png" th:href="@{/static/images/caerang.png}" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Jua&family=Roboto+Slab:wght@400;600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" th:href="@{/static/css/style.css}">
+    <link rel="stylesheet" th:href="@{/static/css/style.css?v=1.4}">
     <script src="https://kit.fontawesome.com/9eb162ac0d.js" crossorigin="anonymous"></script>
     <script defer th:src="@{/static/js/main.js}"></script>
+    <title>2021 씨애랑 | Project</title>
 </head>
 
 <body>
@@ -24,6 +25,7 @@
     <!-- Navbar -->
     <nav id="navbar">
         <div class="navbar__logo">
+            <img th:src="@{/static/images/logo.png}" alt="">
             <a th:href="@{/}">Caerang SW 전시회</a>
         </div>
         <ul class="navbar__menu">
@@ -46,7 +48,7 @@
     <!-- projects -->
     <section id="work" class="section">
         <div class="section__container">
-            <h1>씨애랑 분야 별 작품 모음 페이지</h1>
+            <h1>분야 별 작품 모음</h1>
             <h3>Projects</h3>
             <div class="work__categories">
                 <button class="category__btn selected" data-filter="*">
@@ -65,21 +67,34 @@
                     Application
                     <!-- <span class="category__count">2</span> -->
                 </button>
+                <button class="category__btn" data-filter="ai">
+                  AI
+                  <!-- <span class="category__count">2</span> -->
+                </button>
+                <button class="category__btn" data-filter="embedded">
+                  Embedded
+                  <!-- <span class="category__count">2</span> -->
+                </button>
+                <button class="category__btn" data-filter="other">
+                  Other
+                  <!-- <span class="category__count">2</span> -->
+                </button>
             </div>
 
             <div class="work__projects">
                 <span th:each="proj : ${proj_list}">
-                    <a th:href="@{/project(title=${proj.proj_name})}" class="project" target="blank" th:attr="data-type=${proj.proj_developField}">
-                        <img th:src="@{/static/images/project3.png}" alt="project1" class="project__img">
-                        <div class="project__title">
-                            <h3 th:text="${proj.proj_name}"></h3>
-                        </div>
-                        <div class="project__description">
-                            <h3 th:text="${proj.proj_name}"></h3>
-                            <span>자세히 보기</span>
-                        </div>
-                    </a>
+                  <a th:href="@{/project(title=${proj.proj_name})}" class="project" th:attr="data-type=${proj.proj_developField}">
+                      <img th:src="${proj.proj_image}" alt="project1" class="project__img">
+                      <div class="project__title">
+                          <h3 th:text="${proj.proj_name}"></h3>
+                      </div>
+                      <div class="project__description">
+                          <h3 th:text="${proj.proj_name}"></h3>
+                          <span>자세히 보기</span>
+                      </div>
+                  </a>
                 </span>
+
             </div>
         </div>
 
@@ -93,7 +108,6 @@
 </body>
 
 <script>
-    // Projects
     const workBtnContainer = document.querySelector('.work__categories');
     const projectContainer = document.querySelector('.work__projects');
     const projects = document.querySelectorAll('.project');
@@ -102,7 +116,6 @@
         if (filter == null) {
             return;
         }
-        // Remove selection from the previous item and select the new one
         const active = document.querySelector('.category__btn.selected');
         active.classList.remove('selected');
         const target =

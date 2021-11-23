@@ -16,4 +16,5 @@ import javax.validation.constraints.NotNull;
 public class ProjectListDto {
     @NotNull private String proj_name;
     @NotNull private String proj_developField;
+    private String proj_image;
 }

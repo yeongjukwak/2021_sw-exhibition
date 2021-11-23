@@ -9,6 +9,7 @@
         SELECT mem_name, mem_grade, mem_github, mem_major
         FROM member
         WHERE mem_team = #{team}
+        ORDER BY mem_name
     </select>
 
     <select id="memberListOfProject" parameterType="String" resultType="MemberOfProjectDto">

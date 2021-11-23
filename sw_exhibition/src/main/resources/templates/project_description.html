@@ -6,15 +6,16 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>2021 씨애랑 | project_description</title>
+  <link rel="icon" type="image/png" th:href="@{/static/images/caerang.png}" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Jua&family=Roboto+Slab:wght@400;600;700&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" th:href="@{/static/css/style.css}">
+  <link rel="stylesheet" th:href="@{/static/css/style.css?v=1.4}">
   <script src="https://kit.fontawesome.com/9eb162ac0d.js" crossorigin="anonymous"></script>
   <script defer th:src="@{/static/js/main.js}"></script>
+  <title>2021 씨애랑 | project_description</title>
 </head>
 
 <body>
@@ -24,6 +25,7 @@
   <!-- Navbar -->
   <nav id="navbar">
     <div class="navbar__logo">
+      <img th:src="@{/static/images/logo.png}" alt="">
       <a th:href="@{/}">Caerang SW 전시회</a>
     </div>
     <ul class="navbar__menu">
@@ -70,7 +72,9 @@
         </div>
       </div>
 
-      <div class="project__detail" th:utext="${proj_desc.proj_content}"></div>
+      <div class="project__detail" th:utext="${proj_desc.proj_content}">
+
+      </div>
 
     </div>
   </section>

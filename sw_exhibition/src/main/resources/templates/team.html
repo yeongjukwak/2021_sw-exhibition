@@ -6,57 +6,58 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" th:href="@{/static/css/style.css}">
+  <link rel="icon" type="image/png" th:href="@{/static/images/caerang.png}" />
+  <link rel="stylesheet" th:href="@{/static/css/style.css?v=1.4}">
   <script src="https://kit.fontawesome.com/9eb162ac0d.js" crossorigin="anonymous"></script>
-  <script th:src="@{/static/js/main.js}" defer></script>
+  <script defer th:src="@{/static/js/main.js}"></script>
   <title>2021 씨애랑 | Team</title>
 </head>
 
 <body>
-  <ul class="skipnavi">
-    <li><a href="#main">본문내용</a></li>
+<ul class="skipnavi">
+  <li><a href="#main">본문내용</a></li>
+</ul>
+<!-- 메인 페이지 시작 (팀 별로 구분) -->
+<div class="main_pc" id="main">
+  <ul class="main_menu">
+    <!-- 팀 라온 -->
+    <li>
+      <div class="bgimg" style="background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);">
+        <!-- <img src="../static/images/raon_game.png" alt=""> -->
+      </div>
+      <a th:href="@{/team/raon}">
+        <img th:src="@{/static/images/Raon_upper.png}" alt="">
+      </a>
+    </li>
+    <!-- 팀 라떼 -->
+    <li>
+      <div class="bgimg" style="background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);">
+        <!-- <img src="../static/images/latte_android.png" alt=""> -->
+      </div>
+      <a th:href="@{/team/latte}">
+        <img th:src="@{/static/images/Latte_upper.png}" alt="">
+      </a>
+    </li>
+    <!-- 팀 코어 -->
+    <li>
+      <div class="bgimg" style="background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);">
+        <!-- <img src="../static/images/core_intel.png" alt=""> -->
+      </div>
+      <a th:href="@{/team/core}">
+        <img th:src="@{/static/images/Core_upper.png}" alt="">
+      </a>
+    </li>
+    <!-- 팀 딥러닝 -->
+    <li>
+      <div class="bgimg" style="background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);">
+        <!-- <img src="../static/images/deep_brain.png" alt=""> -->
+      </div>
+      <a th:href="@{/team/tensor}">
+        <img th:src="@{/static/images/Tensor_upper.png}" alt="">
+      </a>
+    </li>
   </ul>
-  <!-- 메인 페이지 시작 (팀 별로 구분) -->
-  <div class="main_pc" id="main">
-    <ul class="main_menu">
-      <!-- 팀 라온 -->
-      <li>
-        <div class="bgimg">
-          <!-- <img src="../static/images/raon_game.png" alt=""> -->
-        </div>
-        <a th:href="@{/team/raon}">
-          <img th:src="@{/static/images/raon-text.png}" alt="">
-        </a>
-      </li>
-      <!-- 팀 라떼 -->
-      <li>
-        <div class="bgimg">
-          <!-- <img src="../static/images/latte_android.png" alt=""> -->
-        </div>
-        <a th:href="@{/team/latte}">
-          <img th:src="@{/static/images/latte-text.png}" alt="">
-        </a>
-      </li>
-      <!-- 팀 코어 -->
-      <li>
-        <div class="bgimg">
-          <!-- <img src="../static/images/core_intel.png" alt=""> -->
-        </div>
-        <a th:href="@{/team/core}">
-          <img th:src="@{/static/images/core-text.png}" alt="">
-        </a>
-      </li>
-      <!-- 팀 딥러닝 -->
-      <li>
-        <div class="bgimg">
-          <!-- <img src="../static/images/deep_brain.png" alt=""> -->
-        </div>
-        <a th:href="@{/team/deeplearning}">
-          <img th:src="@{/static/images/deep-text.png}" alt="">
-        </a>
-      </li>
-    </ul>
-  </div>
+</div>
 
 </body>
 

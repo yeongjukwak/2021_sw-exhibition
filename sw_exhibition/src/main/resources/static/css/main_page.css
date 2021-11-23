@@ -1,0 +1,135 @@
+body {
+  background: black;
+  color: rgba(255, 255, 255, 0.25);
+  text-align: center;
+  margin: 0;
+}
+
+.main__container {
+  width: 60%;
+  letter-spacing: 0.5em;
+  border: 4px double rgba(255, 255, 255, 0.25);
+  border-width: 4px 0;
+  padding: 1.5em 0em;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.main__title span {
+  font: 1000 4em/1 "Oswald", sans-serif;
+  letter-spacing: 0;
+  padding: 0.25em 0 0.325em;
+  display: block;
+  margin: 0 auto;
+  text-shadow: 0 0 80px rgba(255, 255, 255, 0.5);
+
+  /* Clip Background Image */
+  background: url(https://i.ibb.co/RDTnNrT/animated-text-fill.png) repeat-y;
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  /* Animate Background Image */
+  -webkit-text-fill-color: transparent;
+  -webkit-animation: aitf 80s linear infinite;
+
+  /* Activate hardware acceleration for smoother animations */
+  -webkit-transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+}
+
+/* Animate Background Image */
+@-webkit-keyframes aitf {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+.made__ {
+  letter-spacing: 0.2em;
+}
+
+.open-btn {
+  font: 600 1em/1.5 "Neuton";
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  color: white;
+}
+
+/* @media all and (max-width: 1065px) and (min-width: 801px) {
+  .main__container {
+    width: 100%;
+    letter-spacing: 0.5em;
+    display: flex;
+    flex-direction: column;
+    border: none;
+    padding: 1.5em 0em;
+    position: absolute;
+    left: 0;
+    top: 8%;
+  }
+
+  .made__by {
+    font-size: 10px;
+    margin-bottom: 30px;
+  }
+  .main__title {
+    width: auto;
+  }
+
+  .link-btn {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .made__ p {
+    padding: 0 10px;
+    font-size: 12px;
+  }
+
+  .open-btn {
+    padding: 3px;
+  }
+} */
+
+ @media all and (max-width: 800px) and (min-width: 300px) {
+  .main__container {
+    width: 90%;
+    border: none;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .made__by {
+    font-size: 10px;
+  }
+
+  .main__title span {
+    font-size: 50px;
+    padding: 5px;
+  }
+
+  .link-btn {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .made__ p {
+    padding: 0 10px;
+    font-size: 12px;
+  }
+
+  .open-btn {
+    padding: 3px;
+  }
+} 

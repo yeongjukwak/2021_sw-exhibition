@@ -11,7 +11,7 @@ document.addEventListener('scroll', () => {
   }
 });
 
-// Handle scrolling when tapping on the navbar menu
+// navbar 메뉴 클릭할 때 스크롤 처리
 const navbarMenu = document.querySelector('.navbar__menu');
 navbarMenu.addEventListener('click', (event) => {
   const target = event.target;
@@ -23,13 +23,13 @@ navbarMenu.addEventListener('click', (event) => {
   scrollIntoView(link);
 });
 
-// Navbar toggle button for small screen
+// 작은 화면에서의 navbar toggle 버튼
 const navbarToggleBtn = document.querySelector('.navbar__toggle-btn');
 navbarToggleBtn.addEventListener('click', () => {
   navbarMenu.classList.toggle('open');
 });
 
-// show "arrow up" button when scrolling down
+// 아래로 스크롤 할 때 "arrow up" 버튼 표시
 const arrowUp = document.querySelector('.arrow-up');
 document.addEventListener('scroll', ()=> {
   if(window.scrollY > navbarHeight / 2) {
@@ -39,7 +39,7 @@ document.addEventListener('scroll', ()=> {
   }
 });
 
-// Handle click on the "arrow up" button
+// "arrow up" 버튼 클릭 처리
 arrowUp.addEventListener('click', ()=> {
   scrollIntoView('.skipnavi'); 
 });
